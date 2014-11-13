@@ -68,16 +68,43 @@ class BinarySearchTree : public Drawable
 template < class T >
 int BinarySearchTree<T>::getHeight()
 {
-   //DO THIS
-
+   //DO THIS non-recursive >_>
+   int tallness = getHeight(root);
+   return tallness;
 }
 
 template < class T >
-int BinarySearchTree<T>::getHeight(TreeNode<T>* tNode)
+int BinarySearchTree<T>::getHeight(TreeNode<T>* tNode) //pass in root
 {
    //DO THIS
-
-
+   
+   int left = 0;
+   int right = 0;
+   
+   if (tNode == NULL)
+   {
+    return 0;
+   }
+   /*
+   else if (tNode->getLeft() == NULL && tNode->getRight() == NULL) //no children
+   {
+	if(left > right) {return left + 1};
+	else return right + 1;
+   }
+   */
+   else
+   {
+		left = getHeight(tNode->getLeft() + 1);
+		right = getHeight(tNode->getRight() + 1);
+		if (left > right)
+		{
+		return left + 1;
+		}
+		else
+		{
+		return right + 1;
+		}
+   }
 
 }
 
@@ -89,10 +116,20 @@ bool BinarySearchTree<T>::isBalanced()
 }
 
 template < class T >
-bool BinarySearchTree<T>::isBalanced(TreeNode<T>* tNode)
+bool BinarySearchTree<T>::isBalanced(TreeNode<T>* tNode) //keep height count for left and right  
+//call is ballanced on each roots sub trees keeping a running count of the height of each sub tree, if at any time the subtree hights differ by more than 1, return set balanced to false, other wise leave as true.
 {
    //DO THIS
-
+   TreeNode<T>* left = tNode->getLeft();
+   TreeNode<T>* right = tNode->getRight();
+   
+   if (left =! NULL && right =! NULL)
+   {
+    isBalanced()
+   }
+   
+   left = root;
+   
 
 
 
