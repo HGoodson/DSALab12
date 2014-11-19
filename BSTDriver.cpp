@@ -28,8 +28,8 @@ int main()
    //the unsorted ListArray of cds
    ListArray<CD>* cds = CD::readCDs("cds.txt");
    int numItems = cds->size();
-   cout << numItems << endl;
-   cout << endl;
+   //cout << numItems << endl;
+   //cout << endl;
 
    //test the binary search tree
    //insert all of the cds
@@ -47,7 +47,7 @@ int main()
    while(bst_iter->hasNext())
    {
       CD* cd = bst_iter->next();
-      cd->displayCD();
+      //cd->displayCD();
    }
    delete bst_iter;
 
@@ -57,12 +57,21 @@ int main()
 	int tallness = bst->getHeight();
 	cout << tallness << endl;
 	bool showme = bst->isBalanced();
-	cout << showme << endl;
+	if(showme == true)
+	{
+	cout << "balanced" << endl;
+	}
+	else 
+	{
+	cout << "not balanced" << endl;
+	}
+	cout << "initial pass" << endl;
 	
    //create a minimum height binary search tree
    BinarySearchTree<CD>* min_bst = bst->minimize();
+   cout << "min tree made" << endl;
    bst_iter = min_bst->iterator();
-	
+   //cout << "min height iterated" << endl;
    //make sure that an inorder traversal gives sorted order
    bst_iter->setInorder();  //takes a snapshot of the data
    while(bst_iter->hasNext())
